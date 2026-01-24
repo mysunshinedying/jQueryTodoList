@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>To-do List</title>
+        <link rel="stylesheet" href="./src/style.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+		<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+		<script type="text/javascript" src="./src/script.js"></script>
+    </head>
+    <body>
+		<div id="wrapper">
+			<h1>Todo List</h1>
+			<span class="help">jQuery를 사용한 웹 Todo List입니다.</span>
+			<button type="button" onclick="calculateStats(); $('#TodoStats').slideToggle();">통계보기</button>
+			<div id="TodoStats">
+				<p><b>현재 todo 개수(완료/전체)</b> <span id="completeCount">0 / 0</span></p>
+				<p><b>총 작업 시간</b> <span id="totalWork">00:00:00</span>
+				<button type="button" onclick="calculateStats()" title="통계 새로고침"><i class="fa-solid fa-rotate"></i></button>
+				<button type="button" onclick="resetTotalTime();" class="caution">작업 시간 리셋</button>
+			</div>
+			<div id="timer"><b>작업 시간</b>
+				<span id="timerCount">00:00:00</span>
+				<button type="button" onclick="startTimer();" title="타이머 시작"><i class="fa-solid fa-play"></i></button>
+				<button type="button" onclick="pauseTimer();" title="타이머 일시중지"><i class="fa-solid fa-pause"></i></button>
+				<button type="button" onclick="stopTimer();" title="타이머 중지"><i class="fa-solid fa-stop"></i></button>
+				<button type="button" onclick="resetTimer();" title="타이머 리셋" class="caution">리셋</button>
+			</div>
+			<div>
+				<input type="text" name="title" id="todoTitle" placeholder="할 일 제목">
+				<input type="date" name="due" id="todoDue">
+				<button type="button" onclick="todoSubmit();"><i class="fa-solid fa-plus"></i></button>
+				<button type="button" onclick="todoReset();" class="caution">전체 삭제</button>
+			</div>
+				<ul id="todoList">
+				</ul>
+			<div>
+				<select name="filterOption" id="filterOption">
+					<option value="title">제목</option>
+					<option value="due">기한</option>
+				</select>
+				<input type="text" name="filterTitle" id="filterTitle">
+				<input type="date" name="filterDue" id="filterDue">
+			</div>
+		</div>
+    </body>
+</html>
